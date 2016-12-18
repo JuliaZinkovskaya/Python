@@ -19,3 +19,15 @@ def MaxElem(Num):
 
 max = MaxElem([1, 5, 7, -9, 54, 0, 12])
 print("There is min element: {0}".format(max))
+
+
+def Fib(n):
+    if n < 1:
+        return 0
+    if n == 1:
+        return 1
+    return Fib(n - 1) + Fib(n - 2)
+
+
+fib = Fib(7)
+print("Fib = {0}".format(fib))
