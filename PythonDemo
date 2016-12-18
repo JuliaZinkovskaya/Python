@@ -1,0 +1,9 @@
+def MinElem(Num):
+    min = Num[0]
+    for n in Num:
+        if min > n:
+            min = n
+    return min
+
+min = MinElem([1, 5, 7, -9, 54, 0, 12])
+print("There is min element: {0}".format(min))
