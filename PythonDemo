@@ -32,3 +32,24 @@ def Fib(n):
 fib = Fib(7)
 print("Fib = {0}".format(fib))
 
+
+def SumMatrix(MatrixOne, MatrixTwo):
+    mas = []
+    for i in range(len(MatrixOne)):
+        mas.append([])
+        for j in range(len(MatrixOne[0])):
+            mas[i].append(0)
+    if len(MatrixOne) == len(MatrixTwo) and len(MatrixOne[0]) == len(MatrixTwo[0]):
+        for x in range(len(MatrixOne)):
+            for y in range(len(MatrixOne[x])):
+                mas[x][y] = MatrixOne[x][y] + MatrixTwo[x][y];
+    else:
+        print("Error!")
+    return mas
+
+
+Arr = SumMatrix([[0, 0, 1, 1], [1, 2, 5, 6]], [[1, 1, 2, 3], [1, 1, 2, 0]])
+print("Matrix = {0}".format(Arr))
+
+Arr = SumMatrix([[0, 0, 1, 1], [1, 2, 5, 6]], [[1, 1, 2], [1, 1, 0]])
+print("Matrix = {0}".format(Arr))
