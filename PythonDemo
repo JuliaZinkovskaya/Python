@@ -1,3 +1,5 @@
+Num = [1, 4, 5, 7, -9, 54, 0, 12, 25, 9, -125]
+
 def MinElem(Num):
     min = Num[0]
     for n in Num:
@@ -5,7 +7,8 @@ def MinElem(Num):
             min = n
     return min
 
-min = MinElem([1, 5, 7, -9, 54, 0, 12])
+
+min = MinElem(Num)
 print("There is min element: {0}".format(min))
 
 
@@ -17,7 +20,7 @@ def MaxElem(Num):
     return max
 
 
-max = MaxElem([1, 5, 7, -9, 54, 0, 12])
+max = MaxElem(Num)
 print("There is min element: {0}".format(max))
 
 
@@ -49,7 +52,80 @@ def SumMatrix(MatrixOne, MatrixTwo):
 
 
 Arr = SumMatrix([[0, 0, 1, 1], [1, 2, 5, 6]], [[1, 1, 2, 3], [1, 1, 2, 0]])
-print("Matrix = {0}".format(Arr))
+print("SumMatrix = {0}".format(Arr))
 
 Arr = SumMatrix([[0, 0, 1, 1], [1, 2, 5, 6]], [[1, 1, 2], [1, 1, 0]])
-print("Matrix = {0}".format(Arr))
+print("SumMatrix = {0}".format(Arr))
+
+
+def MultMatrix(MatrixOne, MatrixTwo):
+    mas = []
+    for i in range(len(MatrixOne)):
+        mas.append([])
+        for j in range(len(MatrixTwo[0])):
+            mas[i].append(0)
+    if len(MatrixOne[0]) == len(MatrixTwo):
+        NLength = len(MatrixOne)
+        for x in range(NLength):
+            for y in range(NLength):
+                for z in range(NLength):
+                    mas[x][y] += MatrixOne[x][z] * MatrixTwo[z][y];
+    else:
+        print("Error!")
+    return mas
+
+
+Arr = MultMatrix([[2, 1], [1, 3]], [[4, 2], [2, 0]])
+print("MultMatrix = {0}".format(Arr))
+
+Arr = MultMatrix([[2, 1, 3], [1, 2, 3]], [[2, 0], [5, 8]])
+print("MultMatrix = {0}".format(Arr))
+
+str = input("Enter word: ")
+import re
+
+if re.search("[qwrtypsdfghjklzxcvbnm]", str) != None:
+    print("This word contains consonants.")
+else:
+    print("This word not contains consonants.")
+
+str = input("Enter string: ")
+ArrStr = re.split('\.|!|\?|,|:|;| ', str)
+ArrWord = {}
+for word in ArrStr:
+    if re.search("[qwrtypsdfghjklzxcvbnm]", word) != None and re.search("-", word) == None:
+        print(word)
+        if word in ArrWord:
+            ArrWord[word] = ArrWord[word] + 1
+        else:
+            ArrWord[word] = 1
+
+for x in ArrWord.keys():
+    print("{0} : {1}".format(x, ArrWord[x]))
+
+EvenNum = set()
+FullSquares = set()
+import math
+
+for n in Num:
+    if n % 2 == 0:
+        EvenNum.add(n)
+    if n >= 0:
+        if math.sqrt(n) - (int)(math.sqrt(n)) == 0:
+            FullSquares.add(n)
+
+Result = set.intersection(EvenNum, FullSquares)
+for x in Result:
+    print("Intersection of many : {0}".format(x))
+
+Result = set.union(EvenNum, FullSquares)
+for x in Result:
+    print("Union of many : {0}".format(x))
+
+Result = set.difference(EvenNum, FullSquares)
+for x in Result:
+    print("Difference of many : {0}".format(x))
+
+Result = set.symmetric_difference(EvenNum, FullSquares)
+for x in Result:
+    print("Symetric difference of many : {0}".format(x))
